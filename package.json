@@ -1,0 +1,23 @@
+{
+    "name": "restaurant1717",
+    "description": "NodeJS Session",
+    "author": "chiu yin fan <s1180601@ouhk.edu.hk>",
+    "version": "0.0.1",
+    "dependencies": {
+        "body-parser": "*",
+        "cookie-session": "*",
+        "curl": "^0.1.4",
+        "ejs": "*",
+        "exif": "^0.6.0",
+        "express": "*",
+        "formidable": "^1.1.1",
+        "mongodb": "^2.2.33"
+    },
+    "engines": {
+        "node": "0.12.7",
+        "npm": "2.7.4"
+    },
+    "scripts": {
+        "start": "node server"
+    }
+}

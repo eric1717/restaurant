@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+      img {
+         width: 100%;
+         height: auto;
+      }
+       
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	</style>
+    
+    
+    <link rel="stylesheet" type="text/css" href="layout.css">
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript">
+		var loadMap = function () {
+			var myLatLng = { lat: <%=lat%>, lng: <%=lon%>};
+			var map = new google.maps.Map(document.getElementById("map"), {
+				zoom: 12,
+				center: myLatLng
+			});
+			var map = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+			});
+		};
+		window.onload = loadMap;
+	</script>
+
+    
+    
+</head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+    <!--<div id="map" style="width:500px;height:500px;"></div>-->
+   <div class="w3-container w3-green">
+      <center>
+         <h1>
+            <%= p.name %>
+         </h1>
+      </center>
+      <img src="data:<%= p.mimetype %>;base64, <%= p.photo %>">
+   </div>
+    <div class="w3-container">        
+        
+        <h4>borough:<%=p.borough%></h4>
+        <h4>cuisine:<%=p.cuisine%></h4>
+        <h4>address:</h4>
+            <h4>street:<%=p.address.street%></h4>
+            <h4>building:<%=p.address.building%></h4>
+            <h4>zipcode: <%=p.address.zipcode%></h4>
+        <h4>GPS: <%=lat%>,<%=lon%></h4>
+        <h4>Rating:<h4>
+        <% for (var i = 0; i < p.grades.length; i++) { %>
+            <h4>user: <%=p.grades[i].user%> , score: <%=p.grades[i].score%></h4>
+        <%  } %>
+        
+        <h4>Created by:<%=p.owner%></h4>
+            
+        
+        <% if (lat != -1 && lon != -1) { %>
+         <a href="http://localhost:8099/map?lat=<%=lat%>&lon=<%=lon%>">Go Google MAP</a> 
+        <% }else { %>
+        <h3> Not Coord Data </h3>
+        <% } %>
+        
+</html>
